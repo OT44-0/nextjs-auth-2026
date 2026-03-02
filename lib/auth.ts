@@ -11,8 +11,10 @@ export const auth = betterAuth({
   }),
   emailAndPassword: {
     enabled: true,
-    hash: hashPassword,
-    verify: verifyPassword,
+    password: {
+      hash: hashPassword,
+      verify: verifyPassword,
+    },
   },
   user: {
     additionalFields: {
@@ -26,6 +28,9 @@ export const auth = betterAuth({
         unique: true,
       },
     },
+  },
+  advanced: {
+    useSecureCookies: process.env.NODE_ENV === "production",
   },
   plugins: [
     username(),
