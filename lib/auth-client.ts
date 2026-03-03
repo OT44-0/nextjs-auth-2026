@@ -8,6 +8,8 @@ import { auth } from "./auth";
 export const { signIn, signOut, signUp, useSession, getSession } =
   createAuthClient({
     /** The base URL of the server (optional if you're using the same domain) */
-    baseURL: "http://localhost:3000",
+    baseURL:
+      process.env.NEXT_PUBLIC_BASE_URL ||
+      `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`,
     plugins: [usernameClient(), inferAdditionalFields<typeof auth>()],
   });
