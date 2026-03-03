@@ -19,3 +19,12 @@ export async function requireAdmin() {
   }
   return user;
 }
+
+export async function redirectIfNotCorrectUsername(username: string) {
+  const user = await getCurrentUser();
+
+  if (!user || user.username !== username) {
+    redirect("/");
+  }
+  return user;
+}
