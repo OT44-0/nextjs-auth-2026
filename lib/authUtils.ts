@@ -2,6 +2,7 @@
 import { headers } from "next/headers";
 import { auth } from "./auth";
 import { redirect } from "next/navigation";
+import { logger } from "./logger";
 
 export async function getCurrentUser() {
   const session = await auth.api.getSession({
@@ -24,6 +25,7 @@ export async function redirectIfNotCorrectUsername(username: string) {
   const user = await getCurrentUser();
 
   if (!user || user.username !== username) {
+    logger.warn(user?.username + "tried to access a different user's profile");
     redirect("/");
   }
   return user;

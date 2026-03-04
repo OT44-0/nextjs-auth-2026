@@ -28,6 +28,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  favorittFarge String?
 
   role            Roles @default(USER)
   username        String?

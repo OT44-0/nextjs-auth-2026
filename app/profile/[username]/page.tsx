@@ -1,5 +1,6 @@
 import { getUserByUsername } from "@/actions/user";
 import { redirectIfNotCorrectUsername } from "@/lib/authUtils";
+import ColorForm from "./_components/ColorForm";
 
 async function ProfilePage({
   params,
@@ -14,8 +15,9 @@ async function ProfilePage({
 
   return (
     <div className="text-center mt-10">
-      <h1>ProfilePage</h1>
+      <h1>[userData?.username]</h1>
       <pre>{JSON.stringify(userData, null, 2)}</pre>
+      {userData && <ColorForm user={userData} />}
     </div>
   );
 }

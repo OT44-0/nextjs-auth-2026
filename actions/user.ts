@@ -16,3 +16,23 @@ export async function getUserByUsername(username: string) {
     },
   });
 }
+
+export async function updateFavoriteColor(
+  userId: string,
+  favoriteColor: string,
+) {
+  const user = await getCurrentUser();
+
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
+
+  await db.user.update({
+    where: {
+      id: userId,
+    },
+    data: {
+      favorittFarge: favoriteColor,
+    },
+  });
+}

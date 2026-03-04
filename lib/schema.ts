@@ -17,3 +17,7 @@ export const loginSchema = z.object({
   username: z.string().min(1, "Username cannot be empty!"),
   password: z.string().min(1, "Password cannot be empty!"),
 });
+
+export const colorSchema = z.object({
+  favoriteColor: z.string().min(1, "Color cannot be empty!"),
+});
